@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#6d1734">
+  <title>AIPE — Avaliação Guiada do Prejuízo Estético</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <p class="eyebrow">MVP técnico • uso pericial</p>
+    <h1>AIPE — avaliação guiada</h1>
+  </div>
+  <div class="top-actions">
+    <button class="ghost" id="btnSave">Salvar localmente</button>
+    <button class="ghost" id="btnLoad">Carregar</button>
+    <button class="ghost danger" id="btnReset">Limpar</button>
+  </div>
+</header>
+
+<main class="shell">
+  <aside class="sidebar">
+    <nav id="stepNav"></nav>
+    <div class="side-note">
+      <strong>Importante</strong>
+      <p>O aplicativo organiza o método. Não substitui exame, descrição, nexo causal, consolidação médico-legal nem fundamentação pericial.</p>
+    </div>
+  </aside>
+
+  <section class="workspace">
+    <div class="progress"><div id="progressBar"></div></div>
+
+    <section class="screen active" data-step="0">
+      <div class="hero card">
+        <span class="pill">Versão baseada nas fontes anexadas</span>
+        <h2>Primeiro, verifique se o dano estético permanente pode ser valorado</h2>
+        <p>O AIPE é uma ajuda orientativa para analisar a impressão e o impacto do prejuízo estético. A literatura exige que ele seja associado à descrição técnica e à individualização do caso.</p>
+      </div>
+
+      <div class="card">
+        <h3>Pré-requisitos médico-legais</h3>
+        <div class="check-grid">
+          <label class="check-card"><input type="checkbox" data-path="eligibility.damage"><span><b>Existência do dano demonstrada</b><small>Há alteração corporal externa objetivável.</small></span></label>
+          <label class="check-card"><input type="checkbox" data-path="eligibility.nexus"><span><b>Nexo causal estabelecido</b><small>A sequela é imputável ao evento analisado.</small></span></label>
+          <label class="check-card"><input type="checkbox" data-path="eligibility.consolidated"><span><b>Consolidação médico-legal</b><small>A lesão deixou de apresentar evolução regular relevante.</small></span></label>
+          <label class="check-card"><input type="checkbox" data-path="eligibility.permanent"><span><b>Caráter permanente</b><small>Não se trata apenas de alteração estética temporária.</small></span></label>
+          <label class="check-card"><input type="checkbox" data-path="eligibility.visible"><span><b>Alteração perceptível</b><small>Considerada na perspectiva estática e/ou dinâmica.</small></span></label>
+        </div>
+        <div class="notice warning" id="eligibilityWarning">Marque os pré-requisitos antes de avançar. O sistema permite continuar para estudo, mas registrará a pendência.</div>
+      </div>
+    </section>
+
+    <section class="screen" data-step="1">
+      <div class="card">
+        <h2>Descrição técnica da sequela</h2>
+        <p class="lead">A escala não substitui a descrição. Registre primeiro o que existe.</p>
+        <div class="form-grid">
+          <label>Localização anatômica<textarea data-path="description.location" placeholder="Ex.: região frontal, nasal, malar bilateral, mentoniana..."></textarea></label>
+          <label>Dimensões e extensão<textarea data-path="description.dimensions" placeholder="Medidas em cm, área aproximada, distribuição..."></textarea></label>
+          <label>Características morfológicas<textarea data-path="description.morphology" placeholder="Discromia, hipertrofia, queloide, retração, aderência, fibrose, textura..."></textarea></label>
+          <label>Componente dinâmico<textarea data-path="description.dynamic" placeholder="Mímica, fala, marcha, expressão, mobilidade..."></textarea></label>
+          <label>Estado anterior / comparação<textarea data-path="description.previous" placeholder="Documentação prévia, fotografias, cicatrizes anteriores, cirurgias..."></textarea></label>
+          <label>Possibilidade de reparação especializada<textarea data-path="description.repair" placeholder="Tratamentos possíveis, limites, riscos, prognóstico..."></textarea></label>
+          <label>Repercussão referida pelo periciado<textarea data-path="description.subjective" placeholder="Desgosto, constrangimento, privações; registrar sem confundir relato com achado objetivo."></textarea></label>
+          <label>Condições de observação<textarea data-path="description.observation" placeholder="Distância, iluminação, ângulos, exposição habitual, fotografia padronizada..."></textarea></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-step="2">
+      <div class="card">
+        <h2>Quadro AIPE/Brasil 1</h2>
+        <p class="lead">Guia para análise esquemática da impressão. Selecione uma resposta em cada eixo.</p>
+        <div id="q1Container"></div>
+      </div>
+    </section>
+
+    <section class="screen" data-step="3">
+      <div class="card">
+        <h2>Quadro AIPE/Brasil 2</h2>
+        <p class="lead">Valoração da categoria do prejuízo estético.</p>
+        <div class="notice info">
+          O Quadro 2 registra sistematicamente as respostas do Quadro 1 e permite uma valoração <b>semiautomática</b>. A literatura anexada não apresenta fórmula matemática para somar respostas discordantes. Por isso, este MVP mostra a compatibilidade com cada linha, mas exige confirmação fundamentada do perito.
+        </div>
+        <div class="table-wrap">
+          <table class="aipe-table" id="q2Table"></table>
+        </div>
+        <div id="profileSummary"></div>
+        <fieldset class="category-select">
+          <legend>Categoria final adotada</legend>
+          <div id="categoryOptions"></div>
+        </fieldset>
+        <label>Fundamentação da categoria
+          <textarea data-path="aipe.categoryRationale" id="categoryRationale" placeholder="Explique por que o conjunto das respostas corresponde à categoria escolhida, especialmente se o perfil for não linear."></textarea>
+        </label>
+      </div>
+    </section>
+
+    <section class="screen" data-step="4">
+      <div class="card">
+        <h2>Quadro AIPE/Brasil 3</h2>
+        <p class="lead">Defina o nível de impacto dentro da categoria escolhida.</p>
+        <div id="q3Content"></div>
+      </div>
+    </section>
+
+    <section class="screen" data-step="5">
+      <div class="card">
+        <h2>Quadro AIPE/Brasil 4</h2>
+        <p class="lead">Critérios complementares que podem justificar manter, aumentar ou diminuir o resultado anteriormente obtido.</p>
+        <div id="q4Container"></div>
+        <fieldset>
+          <legend>Efeito dos critérios complementares sobre o resultado</legend>
+          <div class="radio-row">
+            <label><input type="radio" name="adjustment" value="decrease"> Diminuir</label>
+            <label><input type="radio" name="adjustment" value="maintain"> Manter</label>
+            <label><input type="radio" name="adjustment" value="increase"> Aumentar</label>
+          </div>
+        </fieldset>
+        <label>Fundamentação do ajuste
+          <textarea data-path="aipe.adjustmentRationale" placeholder="Indique quais focos complementares justificam a decisão. O aplicativo não altera a pontuação automaticamente."></textarea>
+        </label>
+        <label>Pontuação final após análise complementar
+          <input type="number" min="0" max="50" data-path="aipe.finalScore" id="finalScore">
+        </label>
+      </div>
+    </section>
+
+    <section class="screen" data-step="6">
+      <div class="card">
+        <h2>Síntese pericial</h2>
+        <div id="validationBox"></div>
+        <div class="summary-grid">
+          <div>
+            <h3>Resultado estruturado</h3>
+            <pre id="summaryText"></pre>
+          </div>
+          <div>
+            <h3>Exportação</h3>
+            <div class="export-actions">
+              <button id="btnCopy">Copiar síntese</button>
+              <button id="btnPrint">Imprimir / salvar em PDF</button>
+              <button id="btnJSON">Baixar JSON</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Nota metodológica</h3>
+        <p>O AIPE possui seis categorias positivas, além do grau zero, em faixa de 0 a 50 pontos. A diretriz da ABMLPM recomenda, para dano estético permanente, escala de sete graus de gravidade crescente. Este MVP não força equivalência automática entre os dois sistemas.</p>
+      </div>
+    </section>
+
+    <div class="nav-buttons">
+      <button class="ghost" id="prevBtn">Anterior</button>
+      <button id="nextBtn">Próximo</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Dados armazenados apenas no navegador. Nenhuma informação é enviada a servidor.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
