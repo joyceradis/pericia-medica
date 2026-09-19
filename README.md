@@ -1,8 +1,6 @@
-# PericialKit BR
+# Kit do Perito
 
-> **Traceable medico-legal tools for personal injury assessment.**
-
-Ferramentas médico-legais para avaliação do dano pessoal, construídas a partir de fluxo pericial real e organizadas para manter **método, fonte, limite técnico e decisão humana** visíveis.
+Ferramentas de apoio à perícia médica para organizar cálculos, critérios e referências na avaliação do dano pessoal.
 
 **Aplicação:** https://joyceradis.github.io/pericia-medica/
 
@@ -10,7 +8,7 @@ Ferramentas médico-legais para avaliação do dano pessoal, construídas a part
 
 Perícia não é uma coleção de escalas. O resultado só faz sentido quando o objeto está delimitado, o dano está demonstrado, o nexo foi analisado, a consolidação foi considerada e o método escolhido realmente responde à pergunta pericial.
 
-O PericialKit BR nasceu primeiro como uma planilha operacional de avaliação do dano pessoal. A versão web transforma partes desse fluxo em módulos independentes, testáveis e auditáveis.
+O Kit do Perito nasceu de uma planilha que eu já usava para organizar a avaliação do dano pessoal. A versão web separa as ferramentas que mais fazem sentido usar de forma rápida no navegador.
 
 ```text
 OBJETO
@@ -37,7 +35,7 @@ INTEGRAÇÃO + LIMITES
 | **Danos temporários** | roadmap | Reconstrução cronológica, períodos e consolidação. |
 | **Integração pericial** | roadmap | Fechamento por eixos independentes, sem escore global artificial. |
 
-## Invariantes de segurança
+## Regras que a ferramenta não pode quebrar
 
 ```text
 campo vazio      ≠ achado negativo
@@ -95,35 +93,22 @@ As referências metodológicas e limitações estão em [NOTAS_METODOLOGICAS.md]
 
 Consulte [SECURITY.md](SECURITY.md).
 
-## Arquitetura
+## Como foi feito
+
+A calculadora de Balthazard mantém a matemática separada da interface para que as fórmulas possam ser testadas diretamente. O projeto também tem testes automatizados, verificação no GitHub Actions, funcionamento offline e páginas públicas independentes para cada ferramenta.
 
 ```text
-index.html                landing / descoberta
-toolkit.css               design system público
-balthazard.html           interface Balthazard
-balthazard.js             controller da interface
-balthazard-core.mjs       funções matemáticas puras
-tests/                    testes automatizados
-aipe.html                 interface AIPE/Brasil
-app.js                    lógica do módulo AIPE
-NOTAS_METODOLOGICAS.md    critérios e referências
-.github/workflows/        verificação automatizada
+balthazard-core.mjs   fórmulas
+balthazard.js         interação da página
+tests/                testes automatizados
+aipe.html + app.js    módulo AIPE/Brasil
 ```
 
-## Qualidade
-
-- JavaScript sem dependência de framework no cliente;
-- funções matemáticas isoladas da UI;
-- testes com Node.js test runner;
-- verificação de sintaxe em CI;
-- GitHub Pages;
-- PWA/offline shell;
-- sitemap, canonical URLs e metadata estruturada;
-- `CITATION.cff` para citação do software.
+Isso deixa o cálculo mais fácil de conferir e reduz o risco de uma mudança visual alterar a lógica sem percebermos.
 
 ## Autoria
 
-Projeto concebido por **Dra. Joyce Radis**, médica e perita judicial, a partir de necessidades observadas na prática médico-pericial.
+Projeto criado por **Dra. Joyce Radis**, médica e perita judicial, a partir de necessidades da própria rotina pericial.
 
 GitHub: https://github.com/joyceradis  
 LinkedIn: https://br.linkedin.com/in/drajoyceradis
