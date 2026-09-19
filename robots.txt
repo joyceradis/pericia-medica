@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://joyceradis.github.io/pericia-medica/sitemap.xml
