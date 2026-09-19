@@ -1,0 +1,10 @@
+{
+  "name": "PericialKit BR",
+  "short_name": "PericialKit",
+  "description": "Ferramentas médico-legais rastreáveis para avaliação do dano pessoal.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f1ed",
+  "theme_color": "#6d1734",
+  "lang": "pt-BR"
+}
