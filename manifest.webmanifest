@@ -1,7 +1,7 @@
 {
-  "name": "PericialKit BR",
-  "short_name": "PericialKit",
-  "description": "Ferramentas médico-legais rastreáveis para avaliação do dano pessoal.",
+  "name": "Kit do Perito",
+  "short_name": "Kit do Perito",
+  "description": "Ferramentas de apoio à perícia médica para avaliação do dano pessoal.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#f4f1ed",
