@@ -1,0 +1,24 @@
+name: checks
+
+on:
+  push:
+    branches: [main, feat/pericialkit-public-mvp]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify JavaScript and tests
+        run: npm run check

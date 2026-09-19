@@ -65,3 +65,22 @@ A Diretriz para Avaliação do Dano Pessoal recomenda escala de sete graus de gr
 - Bouchardet FCH, Cobo Plana JA. Utilización del método “AIPE” en la valoración del perjuicio estético y su aplicación en la legislación brasileña civil y penal. Revista Portuguesa do Dano Corporal. 2011;22:167-181.
 - Leal LPFF et al. Valoração Médico-Pericial do Dano Estético. Saúde, Ética & Justiça. 2017;22(1):41-49.
 - Associação Brasileira de Medicina Legal e Perícia Médica. Diretriz para Avaliação do Dano Pessoal. 2025.
+
+
+## 7. Balthazard e capacidade restante
+
+O módulo web reproduz a lógica matemática usada na planilha operacional do projeto:
+
+- cada déficit informado incide sobre a capacidade restante da etapa anterior;
+- o déficit consolidado é obtido pelo complemento da capacidade final;
+- a soma simples é mostrada apenas como comparação, não como resultado equivalente;
+- a sequência deve permanecer rastreável ao referencial utilizado, ainda que a combinação matemática final seja comutativa;
+- o cálculo não define quais percentuais são clinicamente válidos nem quando o método deve ser aplicado.
+
+Para estado anterior funcional quantificável, a operação inversa é:
+
+```text
+D = (F - Ea) / (1 - Ea)
+```
+
+A ferramenta não utiliza essa operação para converter automaticamente concausa, predisposição ou agravamento em percentual.

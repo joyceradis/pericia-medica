@@ -1,0 +1,13 @@
+{
+  "name": "pericialkit-br",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check balthazard.js && node --check app.js && npm test"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
