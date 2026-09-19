@@ -1,4 +1,4 @@
-const CACHE = "pericialkit-v1";
+const CACHE = "kit-do-perito-v1";
 const ASSETS = [
   "./",
   "./index.html",
