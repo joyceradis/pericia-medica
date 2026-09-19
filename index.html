@@ -4,167 +4,163 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#6d1734">
-  <title>AIPE — Avaliação Guiada do Prejuízo Estético</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="PericialKit BR: ferramentas médico-legais rastreáveis para avaliação do dano pessoal, com Balthazard e fluxo AIPE/Brasil.">
+  <meta name="author" content="Dra. Joyce Radis">
+  <meta property="og:title" content="PericialKit BR">
+  <meta property="og:description" content="Ferramentas médico-legais rastreáveis para avaliação do dano pessoal.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://joyceradis.github.io/pericia-medica/">
+  <link rel="canonical" href="https://joyceradis.github.io/pericia-medica/">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="toolkit.css">
+  <title>PericialKit BR — Ferramentas Médico-Legais</title>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"PericialKit BR",
+    "applicationCategory":"MedicalApplication",
+    "operatingSystem":"Web",
+    "url":"https://joyceradis.github.io/pericia-medica/",
+    "author":{"@type":"Person","name":"Dra. Joyce Radis"},
+    "description":"Ferramentas médico-legais rastreáveis para avaliação do dano pessoal."
+  }
+  </script>
 </head>
 <body>
-<header class="topbar">
-  <div>
-    <p class="eyebrow">MVP técnico • uso pericial</p>
-    <h1>AIPE — avaliação guiada</h1>
-  </div>
-  <div class="top-actions">
-    <button class="ghost" id="btnSave">Salvar localmente</button>
-    <button class="ghost" id="btnLoad">Carregar</button>
-    <button class="ghost danger" id="btnReset">Limpar</button>
-  </div>
-</header>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="PericialKit BR">
+      <span class="brand-mark">PK</span>
+      <span><strong>PericialKit BR</strong><small>médico-legal tools</small></span>
+    </a>
+    <nav>
+      <a href="#ferramentas">Ferramentas</a>
+      <a href="#metodo">Método</a>
+      <a href="https://github.com/joyceradis/pericia-medica">Código</a>
+    </nav>
+  </header>
 
-<main class="shell">
-  <aside class="sidebar">
-    <nav id="stepNav"></nav>
-    <div class="side-note">
-      <strong>Importante</strong>
-      <p>O aplicativo organiza o método. Não substitui exame, descrição, nexo causal, consolidação médico-legal nem fundamentação pericial.</p>
+  <main>
+    <section class="hero-shell">
+      <div class="hero-copy">
+        <p class="kicker">MEDICINA LEGAL × SOFTWARE × RASTREABILIDADE</p>
+        <h1>Ferramentas para calcular menos no escuro e <em>fundamentar melhor</em>.</h1>
+        <p class="hero-lead">Um conjunto de ferramentas médico-legais para avaliação do dano pessoal, construído a partir de fluxos reais de perícia e organizado para manter método, fonte e limite técnico visíveis.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="balthazard.html">Abrir Balthazard</a>
+          <a class="button secondary" href="aipe.html">Abrir AIPE/Brasil</a>
+        </div>
+        <div class="trust-row">
+          <span>Sem login</span>
+          <span>Sem envio de dados a servidor</span>
+          <span>Funciona no navegador</span>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <p class="terminal-label">PERICIALKIT / INVARIANTES</p>
+        <pre>nexo        → antes da valoração
+percentual  → exige fonte
+Balthazard  → não cria sequela
+AIPE        → não prova nexo
+escala      → não substitui exame
+automação   → não substitui juízo</pre>
+        <p class="terminal-foot">Ferramenta de apoio. O raciocínio técnico continua sendo do perito.</p>
+      </aside>
+    </section>
+
+    <section class="section" id="ferramentas">
+      <div class="section-heading">
+        <p class="kicker">FERRAMENTAS</p>
+        <h2>Comece pelo problema que você precisa resolver.</h2>
+      </div>
+
+      <div class="tool-grid">
+        <article class="tool-card featured">
+          <div class="tool-topline"><span class="status live">DISPONÍVEL</span><span>01</span></div>
+          <h3>Balthazard</h3>
+          <p>Combinação de déficits pela capacidade restante, com sequência auditável, comparação com soma simples e cálculo inverso para estado anterior funcional quantificável.</p>
+          <ul>
+            <li>até 10 déficits;</li>
+            <li>fonte/item/página por entrada;</li>
+            <li>Balthazard tradicional e inversa;</li>
+            <li>síntese copiável.</li>
+          </ul>
+          <a class="text-link" href="balthazard.html">Abrir calculadora →</a>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-topline"><span class="status live">DISPONÍVEL</span><span>02</span></div>
+          <h3>AIPE/Brasil</h3>
+          <p>Fluxo guiado para análise do prejuízo estético com descrição técnica, pré-requisitos, categorização e fundamentação explícita.</p>
+          <ul>
+            <li>gates médico-legais;</li>
+            <li>descrição antes da escala;</li>
+            <li>sem equivalências automáticas indevidas;</li>
+            <li>síntese estruturada.</li>
+          </ul>
+          <a class="text-link" href="aipe.html">Abrir módulo →</a>
+        </article>
+
+        <article class="tool-card muted-card">
+          <div class="tool-topline"><span class="status planned">ROADMAP</span><span>03+</span></div>
+          <h3>Integração do dano pessoal</h3>
+          <p>Danos temporários, consolidação, repercussões e fechamento por eixos independentes estão sendo modularizados a partir do fluxo pericial original.</p>
+          <a class="text-link" href="https://github.com/joyceradis/pericia-medica">Acompanhar evolução →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section method-section" id="metodo">
+      <div class="section-heading">
+        <p class="kicker">MÉTODO</p>
+        <h2>O cálculo só entra depois da pergunta certa.</h2>
+      </div>
+      <div class="method-flow" aria-label="Fluxo metodológico">
+        <div><span>01</span><strong>Objeto</strong><small>o que deve ser avaliado?</small></div>
+        <div><span>02</span><strong>Dano</strong><small>o que está demonstrado?</small></div>
+        <div><span>03</span><strong>Nexo</strong><small>o que pode ser atribuído?</small></div>
+        <div><span>04</span><strong>Consolidação</strong><small>o que é temporário ou permanente?</small></div>
+        <div><span>05</span><strong>Valoração</strong><small>qual método realmente se aplica?</small></div>
+        <div><span>06</span><strong>Integração</strong><small>o que pode e não pode ser concluído?</small></div>
+      </div>
+      <div class="method-note-large">
+        <strong>Princípio do projeto:</strong>
+        <p>campos vazios não viram fatos; instrumentos independentes não são somados artificialmente; um resultado matemático não substitui indicação metodológica, exame ou fundamentação.</p>
+      </div>
+    </section>
+
+    <section class="section evidence-section">
+      <div>
+        <p class="kicker">TRANSPARÊNCIA</p>
+        <h2>Código verificável. Critérios explícitos.</h2>
+      </div>
+      <div class="evidence-copy">
+        <p>As funções matemáticas do módulo Balthazard são separadas da interface e cobertas por testes automatizados. O repositório público documenta fontes, limitações e regras de segurança.</p>
+        <div class="link-row">
+          <a href="https://github.com/joyceradis/pericia-medica">GitHub</a>
+          <a href="https://github.com/joyceradis/pericia-medica/blob/main/NOTAS_METODOLOGICAS.md">Notas metodológicas</a>
+          <a href="https://github.com/joyceradis/pericia-medica/blob/main/SECURITY.md">Segurança</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <strong>PericialKit BR</strong>
+      <p>Projeto concebido por Dra. Joyce Radis — médica e perita judicial.</p>
     </div>
-  </aside>
-
-  <section class="workspace">
-    <div class="progress"><div id="progressBar"></div></div>
-
-    <section class="screen active" data-step="0">
-      <div class="hero card">
-        <span class="pill">Versão baseada nas fontes anexadas</span>
-        <h2>Primeiro, verifique se o dano estético permanente pode ser valorado</h2>
-        <p>O AIPE é uma ajuda orientativa para analisar a impressão e o impacto do prejuízo estético. A literatura exige que ele seja associado à descrição técnica e à individualização do caso.</p>
-      </div>
-
-      <div class="card">
-        <h3>Pré-requisitos médico-legais</h3>
-        <div class="check-grid">
-          <label class="check-card"><input type="checkbox" data-path="eligibility.damage"><span><b>Existência do dano demonstrada</b><small>Há alteração corporal externa objetivável.</small></span></label>
-          <label class="check-card"><input type="checkbox" data-path="eligibility.nexus"><span><b>Nexo causal estabelecido</b><small>A sequela é imputável ao evento analisado.</small></span></label>
-          <label class="check-card"><input type="checkbox" data-path="eligibility.consolidated"><span><b>Consolidação médico-legal</b><small>A lesão deixou de apresentar evolução regular relevante.</small></span></label>
-          <label class="check-card"><input type="checkbox" data-path="eligibility.permanent"><span><b>Caráter permanente</b><small>Não se trata apenas de alteração estética temporária.</small></span></label>
-          <label class="check-card"><input type="checkbox" data-path="eligibility.visible"><span><b>Alteração perceptível</b><small>Considerada na perspectiva estática e/ou dinâmica.</small></span></label>
-        </div>
-        <div class="notice warning" id="eligibilityWarning">Marque os pré-requisitos antes de avançar. O sistema permite continuar para estudo, mas registrará a pendência.</div>
-      </div>
-    </section>
-
-    <section class="screen" data-step="1">
-      <div class="card">
-        <h2>Descrição técnica da sequela</h2>
-        <p class="lead">A escala não substitui a descrição. Registre primeiro o que existe.</p>
-        <div class="form-grid">
-          <label>Localização anatômica<textarea data-path="description.location" placeholder="Ex.: região frontal, nasal, malar bilateral, mentoniana..."></textarea></label>
-          <label>Dimensões e extensão<textarea data-path="description.dimensions" placeholder="Medidas em cm, área aproximada, distribuição..."></textarea></label>
-          <label>Características morfológicas<textarea data-path="description.morphology" placeholder="Discromia, hipertrofia, queloide, retração, aderência, fibrose, textura..."></textarea></label>
-          <label>Componente dinâmico<textarea data-path="description.dynamic" placeholder="Mímica, fala, marcha, expressão, mobilidade..."></textarea></label>
-          <label>Estado anterior / comparação<textarea data-path="description.previous" placeholder="Documentação prévia, fotografias, cicatrizes anteriores, cirurgias..."></textarea></label>
-          <label>Possibilidade de reparação especializada<textarea data-path="description.repair" placeholder="Tratamentos possíveis, limites, riscos, prognóstico..."></textarea></label>
-          <label>Repercussão referida pelo periciado<textarea data-path="description.subjective" placeholder="Desgosto, constrangimento, privações; registrar sem confundir relato com achado objetivo."></textarea></label>
-          <label>Condições de observação<textarea data-path="description.observation" placeholder="Distância, iluminação, ângulos, exposição habitual, fotografia padronizada..."></textarea></label>
-        </div>
-      </div>
-    </section>
-
-    <section class="screen" data-step="2">
-      <div class="card">
-        <h2>Quadro AIPE/Brasil 1</h2>
-        <p class="lead">Guia para análise esquemática da impressão. Selecione uma resposta em cada eixo.</p>
-        <div id="q1Container"></div>
-      </div>
-    </section>
-
-    <section class="screen" data-step="3">
-      <div class="card">
-        <h2>Quadro AIPE/Brasil 2</h2>
-        <p class="lead">Valoração da categoria do prejuízo estético.</p>
-        <div class="notice info">
-          O Quadro 2 registra sistematicamente as respostas do Quadro 1 e permite uma valoração <b>semiautomática</b>. A literatura anexada não apresenta fórmula matemática para somar respostas discordantes. Por isso, este MVP mostra a compatibilidade com cada linha, mas exige confirmação fundamentada do perito.
-        </div>
-        <div class="table-wrap">
-          <table class="aipe-table" id="q2Table"></table>
-        </div>
-        <div id="profileSummary"></div>
-        <fieldset class="category-select">
-          <legend>Categoria final adotada</legend>
-          <div id="categoryOptions"></div>
-        </fieldset>
-        <label>Fundamentação da categoria
-          <textarea data-path="aipe.categoryRationale" id="categoryRationale" placeholder="Explique por que o conjunto das respostas corresponde à categoria escolhida, especialmente se o perfil for não linear."></textarea>
-        </label>
-      </div>
-    </section>
-
-    <section class="screen" data-step="4">
-      <div class="card">
-        <h2>Quadro AIPE/Brasil 3</h2>
-        <p class="lead">Defina o nível de impacto dentro da categoria escolhida.</p>
-        <div id="q3Content"></div>
-      </div>
-    </section>
-
-    <section class="screen" data-step="5">
-      <div class="card">
-        <h2>Quadro AIPE/Brasil 4</h2>
-        <p class="lead">Critérios complementares que podem justificar manter, aumentar ou diminuir o resultado anteriormente obtido.</p>
-        <div id="q4Container"></div>
-        <fieldset>
-          <legend>Efeito dos critérios complementares sobre o resultado</legend>
-          <div class="radio-row">
-            <label><input type="radio" name="adjustment" value="decrease"> Diminuir</label>
-            <label><input type="radio" name="adjustment" value="maintain"> Manter</label>
-            <label><input type="radio" name="adjustment" value="increase"> Aumentar</label>
-          </div>
-        </fieldset>
-        <label>Fundamentação do ajuste
-          <textarea data-path="aipe.adjustmentRationale" placeholder="Indique quais focos complementares justificam a decisão. O aplicativo não altera a pontuação automaticamente."></textarea>
-        </label>
-        <label>Pontuação final após análise complementar
-          <input type="number" min="0" max="50" data-path="aipe.finalScore" id="finalScore">
-        </label>
-      </div>
-    </section>
-
-    <section class="screen" data-step="6">
-      <div class="card">
-        <h2>Síntese pericial</h2>
-        <div id="validationBox"></div>
-        <div class="summary-grid">
-          <div>
-            <h3>Resultado estruturado</h3>
-            <pre id="summaryText"></pre>
-          </div>
-          <div>
-            <h3>Exportação</h3>
-            <div class="export-actions">
-              <button id="btnCopy">Copiar síntese</button>
-              <button id="btnPrint">Imprimir / salvar em PDF</button>
-              <button id="btnJSON">Baixar JSON</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>Nota metodológica</h3>
-        <p>O AIPE possui seis categorias positivas, além do grau zero, em faixa de 0 a 50 pontos. A diretriz da ABMLPM recomenda, para dano estético permanente, escala de sete graus de gravidade crescente. Este MVP não força equivalência automática entre os dois sistemas.</p>
-      </div>
-    </section>
-
-    <div class="nav-buttons">
-      <button class="ghost" id="prevBtn">Anterior</button>
-      <button id="nextBtn">Próximo</button>
+    <div>
+      <a href="https://github.com/joyceradis">GitHub</a>
+      <a href="https://br.linkedin.com/in/drajoyceradis">LinkedIn</a>
+      <a href="mailto:contato@drajoyceradis.com">Contato</a>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer>
-  <p>Dados armazenados apenas no navegador. Nenhuma informação é enviada a servidor.</p>
-</footer>
-
-<script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./sw.js").catch(() => {});
+    }
+  </script>
 </body>
 </html>
