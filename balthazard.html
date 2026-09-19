@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#6d1734">
+  <meta name="description" content="Calculadora de Balthazard e Balthazard inversa para apoio à avaliação médico-legal do dano pessoal.">
+  <meta name="author" content="Dra. Joyce Radis">
+  <link rel="canonical" href="https://joyceradis.github.io/pericia-medica/balthazard.html">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="toolkit.css">
+  <title>Calculadora de Balthazard | PericialKit BR</title>
+</head>
+<body>
+  <header class="site-header compact">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">PK</span>
+      <span><strong>PericialKit BR</strong><small>Balthazard</small></span>
+    </a>
+    <nav><a href="index.html">Início</a><a href="aipe.html">AIPE/Brasil</a><a href="https://github.com/joyceradis/pericia-medica">Código</a></nav>
+  </header>
+
+  <main class="tool-shell">
+    <section class="tool-hero">
+      <p class="kicker">DÉFICIT FUNCIONAL × CAPACIDADE RESTANTE</p>
+      <h1>Calculadora de Balthazard</h1>
+      <p>Combine déficits funcionais independentes pela capacidade restante mantendo a sequência e a fonte de cada entrada visíveis.</p>
+      <div class="notice neutral"><strong>Antes do número:</strong> use apenas percentuais tecnicamente demonstrados e um referencial que autorize essa forma de combinação. Balthazard não cria percentual clínico.</div>
+    </section>
+
+    <section class="calculator-card">
+      <div class="calculator-heading">
+        <div>
+          <span class="step-tag">BALTHAZARD TRADICIONAL</span>
+          <h2>Déficits a combinar</h2>
+        </div>
+        <button class="button secondary small" id="addRow" type="button">+ Adicionar sequela</button>
+      </div>
+
+      <div id="deficitRows" class="calc-rows"></div>
+
+      <div class="result-shell" id="resultBox">
+        <p class="muted">Informe ao menos um percentual para calcular.</p>
+      </div>
+
+      <div class="calculator-actions">
+        <button class="button primary" id="copyResult" type="button">Copiar síntese</button>
+        <button class="button secondary" id="resetTool" type="button">Limpar</button>
+      </div>
+    </section>
+
+    <section class="calculator-card">
+      <div class="calculator-heading">
+        <div>
+          <span class="step-tag">ESTADO ANTERIOR</span>
+          <h2>Balthazard inversa</h2>
+        </div>
+      </div>
+
+      <p class="section-intro">Use somente quando houver déficit funcional preexistente objetivamente quantificável no mesmo domínio e referencial compatível.</p>
+
+      <div class="inverse-grid" id="inverseInputs">
+        <label>Déficit funcional global atual (%)
+          <input type="number" id="currentDeficit" min="0" max="100" step="0.01" inputmode="decimal" placeholder="Ex.: 44">
+        </label>
+        <label>Estado anterior funcional (%)
+          <input type="number" id="priorDeficit" min="0" max="99.99" step="0.01" inputmode="decimal" placeholder="Ex.: 20">
+        </label>
+      </div>
+
+      <div class="result-shell" id="inverseResult">
+        <p class="muted">Preencha os dois campos para calcular.</p>
+      </div>
+    </section>
+
+    <section class="formula-card">
+      <div>
+        <p class="kicker">RASTREABILIDADE</p>
+        <h2>O que a ferramenta calcula</h2>
+      </div>
+      <div class="formula-copy">
+        <p><strong>Combinação:</strong> a cada etapa, o novo déficit incide sobre a capacidade restante, não sobre 100% novamente.</p>
+        <code>capacidade_restante = capacidade_anterior × (1 − déficit)</code>
+        <p><strong>Inversa:</strong> isola matematicamente o incremento funcional quando o estado anterior é quantificável.</p>
+        <code>D = (F − Ea) / (1 − Ea)</code>
+      </div>
+    </section>
+
+    <section class="safety-card">
+      <strong>Limites de uso</strong>
+      <p>O resultado é matemático e não estabelece, isoladamente, nexo causal, incapacidade, concausa, responsabilidade jurídica ou valor indenizatório. Percentuais de entrada, indicação do método e interpretação final dependem do referencial técnico aplicável e do juízo pericial.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div><strong>PericialKit BR</strong><p>Sem cadastro. Sem envio de dados a servidor.</p></div>
+    <div><a href="index.html">Início</a><a href="aipe.html">AIPE/Brasil</a><a href="https://github.com/joyceradis/pericia-medica">Código</a></div>
+  </footer>
+
+  <script type="module" src="balthazard.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./sw.js").catch(() => {});
+    }
+  </script>
+</body>
+</html>
