@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "PericialKit BR"
+message: "Se esta ferramenta apoiar trabalho acadêmico, técnico ou metodológico, cite o projeto e as referências específicas do módulo utilizado."
+type: software
+authors:
+  - family-names: "Radis de Souza de Oliveira"
+    given-names: "Joyce"
+version: 0.1.0
+date-released: 2026-09-19
+url: "https://joyceradis.github.io/pericia-medica/"
+repository-code: "https://github.com/joyceradis/pericia-medica"
+license: "LicenseRef-Proprietary"
