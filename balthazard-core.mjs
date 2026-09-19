@@ -7,9 +7,9 @@ export function normalizePercent(value, label = "valor") {
 }
 
 export function combineDeficits(values) {
-  const clean = values
-    .map((value, index) => normalizePercent(value, `Sequela ${index + 1}`))
-    .filter(value => value > 0);
+  const clean = values.map((value, index) =>
+    normalizePercent(value, `Sequela ${index + 1}`)
+  );
 
   let remaining = 100;
   const steps = clean.map((value, index) => {
