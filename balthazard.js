@@ -10,21 +10,27 @@ const addButton = document.querySelector("#addRow");
 function rowTemplate(index) {
   return `
     <div class="calc-row" data-row>
+      <div class="row-index" aria-hidden="true">${index}</div>
       <label>
-        Sequela ${index}
+        Descrição da sequela
+        <input type="text" data-description placeholder="Ex.: limitação de flexão do joelho">
+      </label>
+      <label>
+        Valor (%)
         <input type="number" min="0" max="100" step="0.01" inputmode="decimal" data-deficit placeholder="0">
       </label>
       <label>
         Fonte / item / página
         <input type="text" data-source placeholder="Ex.: barema, item 3.2, p. 41">
       </label>
-      <button class="icon-button" type="button" data-remove aria-label="Remover sequela">×</button>
+      <button class="icon-button" type="button" data-remove aria-label="Remover sequela ${index}">×</button>
     </div>`;
 }
 
 function renumberRows() {
   [...rows.querySelectorAll("[data-row]")].forEach((row, index) => {
-    row.querySelector("label").childNodes[0].nodeValue = `Sequela ${index + 1} `;
+    row.querySelector(".row-index").textContent = index + 1;
+    row.querySelector("[data-remove]").setAttribute("aria-label", `Remover sequela ${index + 1}`);
   });
 }
 
@@ -49,6 +55,7 @@ function bindRemoveButtons() {
 function getEntries() {
   return [...rows.querySelectorAll("[data-row]")].map((row, index) => ({
     label: `Sequela ${index + 1}`,
+    description: row.querySelector("[data-description]").value.trim(),
     value: row.querySelector("[data-deficit]").value,
     source: row.querySelector("[data-source]").value.trim(),
   }));
@@ -66,6 +73,7 @@ function calculate() {
     const rowsHtml = calc.steps.map((step, index) => `
       <tr>
         <td>${index + 1}</td>
+        <td>${entries[index]?.description || "—"}</td>
         <td>${round(step.deficit)}%</td>
         <td>${round(step.capacityBefore)}%</td>
         <td>${round(step.attributableImpact)}%</td>
@@ -81,7 +89,7 @@ function calculate() {
       </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>#</th><th>Valor</th><th>Capacidade anterior</th><th>Impacto real</th><th>Capacidade restante</th><th>Fonte</th></tr></thead>
+          <thead><tr><th>#</th><th>Sequela</th><th>Valor</th><th>Capacidade anterior</th><th>Impacto real</th><th>Capacidade restante</th><th>Fonte</th></tr></thead>
           <tbody>${rowsHtml}</tbody>
         </table>
       </div>
@@ -115,7 +123,7 @@ function buildCopyText() {
   const entries = getEntries().filter(entry => entry.value !== "");
   if (!entries.length) return "";
   const calc = combineDeficits(entries.map(entry => entry.value));
-  const sources = entries.map((entry, i) => `${i + 1}. ${entry.value}% — ${entry.source || "fonte não registrada"}`).join("\n");
+  const sources = entries.map((entry, i) => `${i + 1}. ${entry.description || "sequela não descrita"} — ${entry.value}% — ${entry.source || "fonte não registrada"}`).join("\n");
   return `BALTHAZARD — CAPACIDADE RESTANTE
 Déficits informados:
 ${sources}
