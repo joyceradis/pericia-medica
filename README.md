@@ -1,34 +1,133 @@
-# AIPE — MVP baseado na literatura
+# PericialKit BR
 
-Aplicação estática, sem backend, pronta para GitHub Pages, Netlify, Vercel ou qualquer hospedagem de arquivos HTML/CSS/JS.
+> **Traceable medico-legal tools for personal injury assessment.**
 
-## Publicar no GitHub Pages
+Ferramentas médico-legais para avaliação do dano pessoal, construídas a partir de fluxo pericial real e organizadas para manter **método, fonte, limite técnico e decisão humana** visíveis.
 
-1. Crie um repositório no GitHub.
-2. Envie `index.html`, `styles.css` e `app.js` para a raiz.
-3. Abra **Settings → Pages**.
-4. Em **Build and deployment**, selecione **Deploy from a branch**.
-5. Selecione a branch `main` e a pasta `/root`.
-6. Aguarde a URL publicada.
+**Aplicação:** https://joyceradis.github.io/pericia-medica/
 
-## Usar no Google Sites
+## Por que este projeto existe
 
-O Google Sites não executa um projeto HTML completo diretamente como arquivo local. Publique primeiro no GitHub Pages e depois:
+Perícia não é uma coleção de escalas. O resultado só faz sentido quando o objeto está delimitado, o dano está demonstrado, o nexo foi analisado, a consolidação foi considerada e o método escolhido realmente responde à pergunta pericial.
 
-1. No Google Sites, clique em **Inserir → Incorporar**.
-2. Cole a URL pública do GitHub Pages.
-3. Ajuste o tamanho do quadro incorporado.
+O PericialKit BR nasceu primeiro como uma planilha operacional de avaliação do dano pessoal. A versão web transforma partes desse fluxo em módulos independentes, testáveis e auditáveis.
 
-## Limites metodológicos implementados
+```text
+OBJETO
+  ↓
+DANO DEMONSTRÁVEL
+  ↓
+NEXO
+  ↓
+CURA / CONSOLIDAÇÃO
+  ↓
+MÉTODO APLICÁVEL
+  ↓
+VALORAÇÃO
+  ↓
+INTEGRAÇÃO + LIMITES
+```
 
-- O Quadro 1 registra cinco eixos de impressão.
-- O Quadro 2 mostra compatibilidade entre as respostas e os perfis categóricos.
-- Não há soma automática de respostas discordantes, porque as fontes anexadas não fornecem fórmula validada para isso.
-- O Quadro 3 usa as faixas e subfaixas publicadas, inclusive 31–32, 33–35, 36–40, 41–48 e 49–50 para “importantíssimo”.
-- O Quadro 4 documenta critérios complementares. O ajuste é fundamentado e manual.
-- A aplicação não converte automaticamente AIPE 0–50 em escala ABMLPM de 1/7 a 7/7.
-- Dados são armazenados apenas no `localStorage` do navegador.
+## Módulos
 
-## Aviso
+| Módulo | Status | O que faz |
+| --- | --- | --- |
+| **Balthazard** | disponível | Combina déficits pela capacidade restante, mantém descrição/fonte por entrada e oferece cálculo inverso para estado anterior funcional quantificável. |
+| **AIPE/Brasil** | disponível | Fluxo guiado para descrição e análise do prejuízo estético, preservando fundamentação manual e limites metodológicos. |
+| **Danos temporários** | roadmap | Reconstrução cronológica, períodos e consolidação. |
+| **Integração pericial** | roadmap | Fechamento por eixos independentes, sem escore global artificial. |
 
-Ferramenta de apoio à organização do raciocínio pericial. Não substitui exame clínico, descrição pormenorizada, nexo causal, consolidação médico-legal, análise do estado anterior ou julgamento técnico do perito.
+## Invariantes de segurança
+
+```text
+campo vazio      ≠ achado negativo
+percentual       ≠ fato sem fonte
+Balthazard       ≠ gerador de percentual clínico
+AIPE             ≠ prova de nexo
+escala           ≠ substituto do exame
+automação        ≠ autoridade pericial
+```
+
+## Balthazard
+
+A lógica matemática fica separada da interface em `balthazard-core.mjs`.
+
+A cada etapa:
+
+```text
+impacto = capacidade_anterior × déficit
+capacidade_restante = capacidade_anterior − impacto
+```
+
+O déficit consolidado é o complemento da capacidade restante.
+
+O módulo também implementa a operação inversa:
+
+```text
+D = (F − Ea) / (1 − Ea)
+```
+
+onde `F` é o déficit funcional global atual e `Ea` é o estado anterior funcional quantificável. A própria interface registra que a operação matemática só é pertinente quando o referencial técnico autoriza esse isolamento.
+
+### Testes
+
+```bash
+npm test
+npm run check
+```
+
+Os testes cobrem combinação de déficits, invariância matemática à ordem, entradas fora de faixa e Balthazard inversa.
+
+## AIPE/Brasil
+
+O módulo AIPE preserva uma distinção importante: **compatibilidade interna do formulário não é um escore validado adicional**. A categoria e o ajuste permanecem decisões fundamentadas do perito.
+
+As referências metodológicas e limitações estão em [NOTAS_METODOLOGICAS.md](NOTAS_METODOLOGICAS.md).
+
+## Privacidade
+
+- sem backend;
+- sem autenticação;
+- sem telemetria de paciente;
+- cálculos executados no navegador;
+- nenhum documento judicial deve ser publicado no repositório;
+- demonstrações devem usar dados fictícios ou plenamente desidentificados.
+
+Consulte [SECURITY.md](SECURITY.md).
+
+## Arquitetura
+
+```text
+index.html                landing / descoberta
+toolkit.css               design system público
+balthazard.html           interface Balthazard
+balthazard.js             controller da interface
+balthazard-core.mjs       funções matemáticas puras
+tests/                    testes automatizados
+aipe.html                 interface AIPE/Brasil
+app.js                    lógica do módulo AIPE
+NOTAS_METODOLOGICAS.md    critérios e referências
+.github/workflows/        verificação automatizada
+```
+
+## Qualidade
+
+- JavaScript sem dependência de framework no cliente;
+- funções matemáticas isoladas da UI;
+- testes com Node.js test runner;
+- verificação de sintaxe em CI;
+- GitHub Pages;
+- PWA/offline shell;
+- sitemap, canonical URLs e metadata estruturada;
+- `CITATION.cff` para citação do software.
+
+## Autoria
+
+Projeto concebido por **Dra. Joyce Radis**, médica e perita judicial, a partir de necessidades observadas na prática médico-pericial.
+
+GitHub: https://github.com/joyceradis  
+LinkedIn: https://br.linkedin.com/in/drajoyceradis
+
+## Licença
+
+O código é publicamente visível para portfólio, avaliação e demonstração. Consulte [LICENSE](LICENSE) antes de copiar, modificar, distribuir ou reutilizar conteúdo. Materiais e instrumentos de terceiros permanecem sujeitos aos respectivos direitos e condições.
