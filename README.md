@@ -14,6 +14,17 @@ O **Kit do Perito** reúne cálculos e instrumentos de avaliação do dano, incl
 
 **Rastreabilidade:** [histórico do README](https://github.com/joyceradis/pericia-medica/commits/main/README.md) · [PRs](https://github.com/joyceradis/pericia-medica/pulls?q=is%3Apr).
 
+## Onde estão as calculadoras
+
+| Função | Código e interface |
+|---|---|
+| Balthazard | [`balthazard-core.mjs`](balthazard-core.mjs) · [`balthazard.js`](balthazard.js) · [`balthazard.html`](balthazard.html) |
+| AIPE/Brasil | [`aipe.html`](aipe.html) · [`app.js`](app.js) |
+| Limites metodológicos | [`NOTAS_METODOLOGICAS.md`](NOTAS_METODOLOGICAS.md) |
+| Testes de cálculo | [`tests/`](tests/) |
+
+**Fronteira:** calculadoras específicas, não o workflow completo do [MedPer](https://github.com/joyceradis/MedPer). Esta tabela localiza código existente; não certifica reutilização sem testes.
+
 ## Por que este projeto existe
 
 Perícia não é uma coleção de escalas. O resultado só faz sentido quando o objeto está delimitado, o dano está demonstrado, o nexo foi analisado, a consolidação foi considerada e o método escolhido realmente responde à pergunta pericial.
