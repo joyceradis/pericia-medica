@@ -4,6 +4,16 @@ Ferramentas de apoio à perícia médica para organizar cálculos, critérios e 
 
 **Aplicação:** https://joyceradis.github.io/pericia-medica/
 
+## Papel no ecossistema Radis
+
+**Kit do Perito é um conjunto de ferramentas médico-periciais de uso pontual**, incluindo Balthazard e AIPE/Brasil. É complementar ao [MedPer](https://github.com/joyceradis/MedPer), que trata do workflow médico-pericial completo; nenhum deles substitui a fundamentação ou o juízo profissional.
+
+**Integração planejada:** a Radis poderá abrir diretamente as calculadoras existentes. O núcleo matemático permanece neste repositório, com seus testes e limitações. Não há integração de estado pericial nem transporte automático de dados reais.
+
+**Situação:** módulos disponíveis para demonstração, com demais módulos identificados como roadmap na seção [Módulos](#módulos).
+
+**Rastreabilidade:** [histórico deste README](https://github.com/joyceradis/pericia-medica/commits/main/README.md) · [PRs do Kit do Perito](https://github.com/joyceradis/pericia-medica/pulls?q=is%3Apr). Não atribuir PR retroativamente quando a origem só pode ser demonstrada por commits.
+
 ## Por que este projeto existe
 
 Perícia não é uma coleção de escalas. O resultado só faz sentido quando o objeto está delimitado, o dano está demonstrado, o nexo foi analisado, a consolidação foi considerada e o método escolhido realmente responde à pergunta pericial.
