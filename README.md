@@ -36,7 +36,8 @@ flowchart LR
   M["MEDPER · workflow separado"] -. "produto complementar" .-> R
   classDef source fill:#eff5f2,stroke:#88ab94,color:#263d33;
   classDef outcome fill:#f4f0fa,stroke:#aa98c5,color:#3e3556;
-  class P,E,O,D,R source;
+  class D source;
+  class R outcome;
 ```
 
 **Leitura:** setas contínuas representam o fluxo conceitual dentro do produto; setas pontilhadas indicam relação entre sistemas ou possibilidade futura, **não integração implementada**.
