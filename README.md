@@ -25,6 +25,22 @@ O **Kit do Perito** reúne cálculos e instrumentos de avaliação do dano, incl
 
 **Fronteira:** calculadoras específicas, não o workflow completo do [MedPer](https://github.com/joyceradis/MedPer). Esta tabela localiza código existente; não certifica reutilização sem testes.
 
+### Diagrama de orientação · Ferramentas periciais
+
+```mermaid
+flowchart LR
+  D["DADOS E CRITÉRIOS CONFIRMADOS"] --> B["BALTHAZARD"]
+  D --> A["AIPE / BRASIL"]
+  B --> R["CÁLCULO RASTREÁVEL"]
+  A --> R
+  M["MEDPER · workflow separado"] -. "produto complementar" .-> R
+  classDef source fill:#eff5f2,stroke:#88ab94,color:#263d33;
+  classDef outcome fill:#f4f0fa,stroke:#aa98c5,color:#3e3556;
+  class P,E,O,D,R source;
+```
+
+**Leitura:** setas contínuas representam o fluxo conceitual dentro do produto; setas pontilhadas indicam relação entre sistemas ou possibilidade futura, **não integração implementada**.
+
 ## Por que este projeto existe
 
 Perícia não é uma coleção de escalas. O resultado só faz sentido quando o objeto está delimitado, o dano está demonstrado, o nexo foi analisado, a consolidação foi considerada e o método escolhido realmente responde à pergunta pericial.
